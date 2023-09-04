@@ -5,14 +5,14 @@
       type="text"
       name="sel"
       id="sel"
-      placeholder="Cerca libro"
+      placeholder="Cerca libro o autore"
       (keyup.enter)="selBook()"
       #inputSel
     /><button (click)="selBook()">Cerca</button>
   </h4>
   
-  <div *ngIf="inputSel.value === ''"> </div>
-  <div *ngIf="selezione === undefined || selezione.length === 0">
+ 
+  <div *ngIf="inputSel.value !== '' && (selezione === undefined || selezione.length === 0)">
     Il libro non è presente nel sistema
   </div>
   <div *ngIf="selezione != []">
