@@ -1,12 +1,12 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { SelectComponent } from './select/select.component';
-//import { InsertComponent } from './insert/insert.component';
-//import { LendingComponent } from './lending/lending.component';
-//import { RemoveComponent } from './remove/remove.component';
-import { DblibService } from './dblib.service';
+import { SelectComponent } from './select/select.component';
+import { InsertComponent } from './insert/insert.component';
+import { LendingComponent } from './lending/lending.component';
+import { RemoveComponent } from './remove/remove.component';
+import { DblibService } from './db-lib.service';
 import { AjaxResponse } from 'rxjs/ajax';
-import { libElem } from './libElem';
+import { libElem } from './libelem';
 
 @Component({
   selector: 'app-root',
