@@ -1,1 +1,34 @@
-<p>select works!</p>
+<h4>
+    Verifica disponibilità del libro nel nostro database cercando per autore o
+    titolo:
+    <input
+      type="text"
+      name="sel"
+      id="sel"
+      placeholder="Cerca libro"
+      (keyup.enter)="selBook()"
+      #inputSel
+    /><button (click)="selBook()">Cerca</button>
+  </h4>
+  
+  <div *ngIf="inputSel.value === ''"> </div>
+  <div *ngIf="selezione === undefined || selezione.length === 0">
+    Il libro non è presente nel sistema
+  </div>
+  <div *ngIf="selezione != []">
+    <ul>
+      <li *ngFor="let find of selezione">
+        <p *ngIf="find.prestito == ''">
+          {{ find.titolo }} di {{ find.autore }} è disponibile in posizione
+          {{ find.posizione }}!
+        </p>
+        <p *ngIf="find.prestito != ''">
+          {{ find.titolo }} di {{ find.autore }} non è disponibile (in prestito)!
+        </p>
+      </li>
+    </ul>
+  </div>
+  
+  <hr />
+  <hr />
+  
