@@ -32,10 +32,7 @@ export class RootComponent implements OnInit {
       next: (x: AjaxResponse<any>) => {
         this.lista = JSON.parse(x.response);
         this.lista.forEach((foundElem: any) => {
-          if (
-            foundElem['autore'].search(reg) != -1 ||
-            foundElem['titolo'].search(reg) != -1
-          ) {
+          if ( element !== '' && (foundElem['autore'].search(reg) != -1 || foundElem['titolo'].search(reg) != -1) ) {
             this.selezione.push(foundElem);
             console.log(this.selezione);
           }
