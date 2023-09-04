@@ -11,3 +11,4 @@ export class InsertComponent implements OnInit {
 
   ngOnInit() {}
 }
+//selezione db e aggiunta

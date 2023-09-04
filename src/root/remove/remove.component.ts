@@ -14,3 +14,4 @@ export class RemoveComponent implements OnInit {
   }
 
 }
+//selezione db e rimozione libro da db se prestito è vuoto

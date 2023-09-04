@@ -14,3 +14,4 @@ export class LendingComponent implements OnInit {
   }
 
 }
+//selezione db e modifica per prestito
