@@ -19,6 +19,7 @@ export class SelectComponent implements OnInit {
     ) as HTMLInputElement;
     var bookName = input.value;
     this.selEvent.emit(bookName);
+    input.value = '';
   }
 
   @Input() selezione: Array<libElem> | undefined;
