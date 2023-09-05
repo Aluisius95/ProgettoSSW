@@ -3,7 +3,6 @@ import { DblibService } from '../db-lib.service';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { libElem } from '../libElem';
-import { single } from 'rxjs';
 
 @Component({
   selector: 'app-insert',
