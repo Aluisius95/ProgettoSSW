@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { libElem } from '../libelem';
+import { libElem } from '../libElem';
 
 @Component({
   selector: 'app-select',

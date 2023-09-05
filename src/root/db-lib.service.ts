@@ -6,10 +6,8 @@ import { ajax, AjaxResponse } from 'rxjs/ajax';
   providedIn: 'root',
 })
 export class DblibService {
-  apiKey: string = '0cce527a';
   URL: string =
-    'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/get?key=' +
-    this.apiKey;
+    'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/get?key=0cce527a';
   constructor() {}
   public getData(): Observable<AjaxResponse<any>> {
     return ajax({

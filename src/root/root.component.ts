@@ -6,7 +6,7 @@ import { LendingComponent } from './lending/lending.component';
 import { RemoveComponent } from './remove/remove.component';
 import { DblibService } from './db-lib.service';
 import { AjaxResponse } from 'rxjs/ajax';
-import { libElem } from './libelem';
+import { libElem } from './libElem';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +28,7 @@ export class RootComponent implements OnInit {
   selBook(element: string) {
     let reg = new RegExp(element, 'i');
     this.selezione = [];
-    this.dS.getData().subscribe({
+    this.ds.getData().subscribe({
       next: (x: AjaxResponse<any>) => {
         this.lista = JSON.parse(x.response);
         this.lista.forEach((foundElem: any) => {
@@ -43,6 +43,6 @@ export class RootComponent implements OnInit {
     });
   }
   selezione: Array<libElem> = [];
-  constructor(private dS: DblibService) {}
+  constructor(private ds: DblibService) {}
   ngOnInit() {}
 }
