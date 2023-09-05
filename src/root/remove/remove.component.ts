@@ -3,7 +3,6 @@ import { DblibService } from '../db-lib.service';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { libElem } from '../libElem';
-import { DbsetService } from '../dbset.service';
 
 
 @Component({
@@ -34,14 +33,16 @@ export class RemoveComponent implements OnInit {
       },
       error: (err) => console.error('Obs got an error on remove: ' + JSON.stringify(err))
     });
+    input.value = '';
     this.selezione = [];
   }
   selezione: Array<libElem> = [];
 
   elim(){
     var input: HTMLInputElement = document.getElementById("el") as HTMLInputElement;
-    var output = document.getElementById('esito');
+    var output = document.getElementById('esitoRim');
     var element = input.value;
+    let msg: number = 0;
     var listaJSON: string;
     this.ds.getData().subscribe({
       next: (x: AjaxResponse<any>) => {
@@ -50,21 +51,24 @@ export class RemoveComponent implements OnInit {
           if (element !== '' && foundElem['titolo'] === element && foundElem['prestito'] === '' ){
             let x = this.lista.indexOf(foundElem);
             this.lista.splice(x , 1);
+            msg = 1;
           }
         })
         listaJSON = JSON.stringify(this.lista);
-        this.sd.setData(listaJSON).subscribe({
-          next: () =>
-            output!.innerHTML = 'Libro rimosso con successo',
+        this.ds.setData(listaJSON).subscribe({
+          next: () => {
+            if(msg===1)
+              output!.innerHTML = 'Libro rimosso con successo'
+            else
+              output!.innerHTML = 'Libro in prestito!'},
           error: (err) => output!.innerHTML = 'Errore nella rimozione: '+ err.response,
         })
         console.log(listaJSON);
       },
       error: (err) => console.error('Obs got an error on remove: ' + JSON.stringify(err))
     })
-    input.value = '';
     this.selezione = [];
   }
-  constructor(private ds: DblibService, private sd: DbsetService) { }
+  constructor(private ds: DblibService) { }
   ngOnInit() { }
 }

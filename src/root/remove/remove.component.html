@@ -1,10 +1,13 @@
-<h4>Qui puoi rimuovere un libro dal database.<h5>ATTENZIONE: i libri in prestito attivo non possono essere rimossi!</h5></h4>
+<h4>Qui puoi rimuovere un libro dal database.
+    <h5>ATTENZIONE: questa è un'operazione irreversibile!</h5>
+    <h5>ATTENZIONE: i libri in prestito attivo non possono essere rimossi!</h5>
+</h4>
 
 <input type="text" name="del" id="del" placeholder="Cerca libro" (keyup.enter)="delBook()"/><button (click)="delBook()">Cerca</button>
 <br>
 <select *ngIf="selezione !== []">
     <option id="el" *ngFor="let del of selezione">{{ del.titolo }}</option>
 </select>
-<button (click)="elim()">Elimina</button>
-<div id="esito">Esito: </div>
+<button (click)="elim()">Elimina</button><br>
+<div>Esito:<div id="esitoRim"></div></div>
 <br><hr><hr>
