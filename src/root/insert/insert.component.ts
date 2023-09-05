@@ -23,7 +23,7 @@ export class InsertComponent implements OnInit {
     var titleEl: string = inputT.value;
     var authorEl: string = inputA.value;
     var positionEl: string = inputP.value;
-    let msg: number = 0;
+    let check: number = 0;
     var listaJSON: string;
     var output = document.getElementById('esitoAdd');
     if( titleEl !== '' && authorEl !== '' && positionEl !== '' ){
@@ -32,10 +32,10 @@ export class InsertComponent implements OnInit {
           this.lista = JSON.parse(x.response);
           this.lista.forEach((selElem: any) => {
             if (selElem['posizione'] === positionEl)
-              msg = 1;
+              check = 1;
               output!.innerHTML = 'Posizione già occupata!';
           });
-          if( !msg ){ 
+          if( !check ){ 
             var tempEl = new libElem(authorEl, titleEl, positionEl, '');
             this.lista.push(tempEl);
             listaJSON = JSON.stringify(this.lista);

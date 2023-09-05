@@ -16,7 +16,12 @@ import { libElem } from '../libElem';
 })
 export class LendingComponent implements OnInit {
   lista: Array<libElem> = [];
-  addPrestito(){}
+  addPrestito(){
+    var inputT: HTMLInputElement = document.getElementById("titAddPr") as HTMLInputElement;
+    var inputP: HTMLInputElement = document.getElementById("titPr") as HTMLInputElement;
+    var titPr: string = inputT.value;
+    var persP: string = inputP.value;
+  }
   remPrestito(){}
   constructor(private ds: DblibService) { }
   ngOnInit() { }
