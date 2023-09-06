@@ -24,7 +24,6 @@ export class LendingComponent implements OnInit {
     this.ds.getData().subscribe({
       next: (x: AjaxResponse<any>) => {
         this.lista = JSON.parse(x.response);
-        console.log(this.lista);
         var persP: string = inputPers.value;
         this.lista.forEach((foundElem: any) => {
           if(pos !== ''  && pos === foundElem['posizione']){

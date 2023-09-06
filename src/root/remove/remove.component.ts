@@ -28,8 +28,6 @@ export class RemoveComponent implements OnInit {
           if (element !== '' && foundElem['titolo'].search(reg) != -1)
             this.selezione.push(foundElem);
         })
-        console.log(this.lista);
-        console.log(this.selezione);
       },
       error: (err) => console.error('Obs got an error on remove: ' + JSON.stringify(err))
     });
@@ -63,7 +61,6 @@ export class RemoveComponent implements OnInit {
               output!.innerHTML = 'Libro in prestito!'},
           error: (err) => output!.innerHTML = 'Errore nella rimozione: '+ err.response,
         })
-        console.log(listaJSON);
       },
       error: (err) => console.error('Obs got an error on remove: ' + JSON.stringify(err))
     })
