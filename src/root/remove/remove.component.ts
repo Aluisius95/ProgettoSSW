@@ -48,7 +48,7 @@ export class RemoveComponent implements OnInit {
       next: (x: AjaxResponse<any>) => {
         this.lista = JSON.parse(x.response);
         this.lista.forEach((foundElem: any) => {
-          if (element !== '' && foundElem['titolo'] === element && foundElem['prestito'] === '' ){
+          if (element !== '' && foundElem['titolo'] === element && foundElem['prestito'] === undefined ){
             let x = this.lista.indexOf(foundElem);
             this.lista.splice(x , 1);
             msg = 1;

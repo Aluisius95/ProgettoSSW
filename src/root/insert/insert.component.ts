@@ -36,7 +36,7 @@ export class InsertComponent implements OnInit {
               output!.innerHTML = 'Posizione già occupata!';
           });
           if( !check ){ 
-            var tempEl = new libElem(authorEl, titleEl, positionEl, '');
+            var tempEl = new libElem(authorEl, titleEl, positionEl, undefined);
             this.lista.push(tempEl);
             listaJSON = JSON.stringify(this.lista);
             this.ds.setData(listaJSON).subscribe({

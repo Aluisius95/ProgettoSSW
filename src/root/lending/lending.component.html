@@ -1,11 +1,6 @@
-<h4>Dopo aver verificato la disponibilità puoi effettuare un prestito:</h4>
-<cite>Campi obbligatori</cite><br>
-
-<input type="text" id="titAddPr" placeholder="Titolo libro">*<br>
-<input type="text" id="addPr" placeholder="Dare in prestito a">*<br>
-<button (click)="addPrestito()">Invio</button>
-<h4>Oppure puoi effettuare una restituzione:</h4>
-<cite>Campi obbligatori</cite><br>
-<input type="text" id="titRemPr" placeholder="Titolo libro da rimuovere prestito">*<br>
-<button (click)="remPrestito()">Rimuovi prestito</button>
+<h4>Dopo aver verificato la disponibilità puoi effettuare un prestito oppure una restituzione</h4>
+<input type="text" id="posizionePR" placeholder="Inserisci posizione libro" style="width: 220px"><input type="text" id="titoloPre" disabled style="width: 220px; cursor:default; user-select: none;"><br>
+<input type="text" id="addPr" placeholder="Dare in prestito a (se non in prestito)" style="width: 220px"><br>
+<button (click)="updatePrestito()">Aggiorna prestito</button><br>
+Esito: <div id="update"></div>
 <hr><hr>

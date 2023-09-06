@@ -35,7 +35,9 @@ export class RootComponent implements OnInit {
           if ( element !== '' && (foundElem['autore'].search(reg) != -1 || foundElem['titolo'].search(reg) != -1) ) {
             this.selezione.push(foundElem);
           }
-          
+          else if (element === ''){
+            this.selezione = this.lista;
+          }
         });
       },
       error: (err) => console.error('Obs got an error: ' + JSON.stringify(err)),

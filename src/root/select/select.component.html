@@ -8,17 +8,19 @@
   <div *ngIf="inputSel.value !== '' && (selezione === undefined || selezione.length === 0)">
     Il libro non è presente nel sistema
   </div>
-  <div *ngIf="selezione != []">
+  <div *ngIf="selezione != []" id="selected">
     <select>
       <option *ngFor="let find of selezione">
-        <div *ngIf="find.prestito == ''">
+        <div *ngIf="find.prestito === undefined">
           {{ find.titolo }} di {{ find.autore }} è disponibile in posizione
-          {{ find.posizione }}!
+          "{{ find.posizione }}"
         </div>
-        <div *ngIf="find.prestito != ''">
-          {{ find.titolo }} di {{ find.autore }} non è disponibile (in prestito)!
+        <div *ngIf="find.prestito !== undefined">
+          {{ find.titolo }} di {{ find.autore }}, della posizione "{{ find.posizione }}", non è disponibile (in prestito a {{ find.prestito }})!
         </div>
       </option>
     </select>
   </div>
+
+  <hr><hr>
   

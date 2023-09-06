@@ -14,9 +14,7 @@ export class SelectComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
   selBook() {
-    var input: HTMLInputElement = document.getElementById(
-      'sel'
-    ) as HTMLInputElement;
+    var input: HTMLInputElement = document.getElementById('sel') as HTMLInputElement;
     var bookName = input.value;
     this.selEvent.emit(bookName);
     input.value = '';
