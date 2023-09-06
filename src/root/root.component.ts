@@ -34,7 +34,6 @@ export class RootComponent implements OnInit {
         this.lista.forEach((foundElem: any) => {
           if ( element !== '' && (foundElem['autore'].search(reg) != -1 || foundElem['titolo'].search(reg) != -1) ) {
             this.selezione.push(foundElem);
-            console.log(this.selezione);
           }
           
         });
