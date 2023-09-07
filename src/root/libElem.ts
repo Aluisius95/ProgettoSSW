@@ -15,4 +15,5 @@ export class libElem {
       this.prestito = prestito;
     }
   }
-  
+
+  //classe con costruttore per il tipo libElem

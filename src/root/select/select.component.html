@@ -1,10 +1,11 @@
 <h4>
     Verifica disponibilità del libro nel nostro database cercando per autore o
-    titolo:
-    <input type="text" name="sel" id="sel" placeholder="Cerca libro o autore" (keyup.enter)="selBook()" #inputSel/><button (click)="selBook()">Cerca</button>
+    titolo:(lascia vuoto per visualizzare l'intero db)<br>
+    <input type="text" name="sel" id="sel" placeholder="Cerca libro o autore" (keyup)="selBook()" #inputSel/><button (click)="selBook()">Cerca</button>
   </h4>
   
  
+  <!-- i dati ricavati dal P vengono filtrati tramite questi attributi di angular che effettuano dei condizionali e/o dei cicli-->
   <div *ngIf="inputSel.value !== '' && (selezione === undefined || selezione.length === 0)">
     Il libro non è presente nel sistema
   </div>
@@ -12,6 +13,7 @@
     <select>
       <option *ngFor="let find of selezione">
         <div *ngIf="find.prestito === undefined">
+          <!-- tramite il costrutto {{elemento.attributo}} stampo a schermo i valori all'interno degli "object" attualmente selezionati -->
           {{ find.titolo }} di {{ find.autore }} è disponibile in posizione
           "{{ find.posizione }}"
         </div>

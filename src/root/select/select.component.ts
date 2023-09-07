@@ -10,6 +10,9 @@ import { libElem } from '../libElem';
   imports: [CommonModule],
 })
 export class SelectComponent implements OnInit {
+  //comunicazione tra Parent e Child
+  //l'output serve a selezionare l'elemento e inviarlo al parent come $event
+  //in modo che effettui le ricerche all'interno dello script Root
   @Output() selEvent = new EventEmitter<string>();
   constructor() {}
   ngOnInit() {}
@@ -19,6 +22,7 @@ export class SelectComponent implements OnInit {
     this.selEvent.emit(bookName);
     input.value = '';
   }
-
+  //i valori trovati all'interno di Root, vengono inviati al Child
+  //per essere utilizzati nell'HTML e quindi nella selezione degli elementi utili
   @Input() selezione: Array<libElem> | undefined;
 }

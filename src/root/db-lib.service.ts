@@ -26,3 +26,4 @@ export class DblibService {
     })
   }
 }
+//creazione degli standard che serviranno per ricavare o inviare il database al server

@@ -1,5 +1,7 @@
 <h4>Dopo aver verificato la disponibilità puoi effettuare un prestito oppure una restituzione</h4>
-<input type="text" id="posizionePR" placeholder="Inserisci posizione libro" style="width: 220px"><input type="text" id="titoloPre" disabled style="width: 220px; cursor:default; user-select: none;"><br>
+<input type="text" id="posizionePR" placeholder="Inserisci posizione libro" style="width: 220px">
+<!-- campo per la visualizzazione del titolo selezionato durante il prestito -->
+<input type="text" id="titoloPre" disabled style="width: 220px; cursor:default; user-select: none;"><br>
 <input type="text" id="addPr" placeholder="Dare in prestito a (se non in prestito)" style="width: 220px"><br>
 <button (click)="updatePrestito()">Aggiorna prestito</button><br>
 Esito: <div id="update"></div>
