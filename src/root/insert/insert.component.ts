@@ -49,7 +49,8 @@ export class InsertComponent implements OnInit {
       })
       inputA.value = '';
       inputT.value = '';
-      inputP.value = '';      
+      inputP.value = '';
+      setTimeout(function(){output!.innerHTML = ''}, 3000);      
     }
   }
   constructor(private ds: DblibService) {}

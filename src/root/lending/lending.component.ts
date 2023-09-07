@@ -49,6 +49,8 @@ export class LendingComponent implements OnInit {
       },
       error: (err) => console.error("Got an error taking the whole DB: " + err)
     })
+    setTimeout(function(){msgUpd!.innerHTML = ''; inputPos.value=''; inputTit.value=''; inputPers.value='';}, 3000);
+
   }
   constructor(private ds: DblibService) { }
   ngOnInit() { }

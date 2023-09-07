@@ -61,10 +61,12 @@ export class RemoveComponent implements OnInit {
               output!.innerHTML = 'Libro in prestito!'},
           error: (err) => output!.innerHTML = 'Errore nella rimozione: '+ err.response,
         })
+        
       },
       error: (err) => console.error('Obs got an error on remove: ' + JSON.stringify(err))
     })
     this.selezione = [];
+    setTimeout(function(){output!.innerHTML = ''}, 3000); 
   }
   constructor(private ds: DblibService) { }
   ngOnInit() { }
