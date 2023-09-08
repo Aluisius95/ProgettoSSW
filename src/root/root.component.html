@@ -6,15 +6,19 @@
   inserimento, rimozione o prestito di libri
 </h3>
 <cite>Rappresentazione grafica minimale</cite><br /><br />
-<hr />
-<hr />
 
+<button (click)="attiva('cerca')">Cerca</button>
+<button (click)="attiva('prestito')">Prestito</button>
+<button  (click)="attiva('inserisci')">Inserisci</button>
+<button  (click)="attiva('rimuovi')">Rimuovi</button>
+<button id="Chiudi" (click)="chiudi()">Chiudi</button>
+<hr />
+<hr />
 <!--i due attributi presenti in app-select servono per la comunicazione tra Parent e Child, il primo invia dal P al C, il secondo riceve dal C al P -->
-<app-select [selezione]="selezione" (selEvent)="selBook($event)"></app-select>
-<app-lending></app-lending>
-<app-insert></app-insert>
-<app-remove></app-remove>
-
+  <div *ngIf="funzionalita['cerca']"><app-select id="Cerca" [selezione]="selezione" (selEvent)="selBook($event)"></app-select></div>
+  <div *ngIf="funzionalita['prestito']"><app-lending id="Prestito"></app-lending></div>
+  <div *ngIf="funzionalita['inserisci']"><app-insert id="Inserisci"></app-insert></div>
+  <div *ngIf="funzionalita['rimuovi']"><app-remove id="Rimuovi"></app-remove></div>
 <footer style="position: fixed; bottom: 0; background-color: aliceblue;">
   Progetto realizzato da Luigi Noto, Matricola 567026, studente di Informatica
   Umanistica, per l'esame di SSW a.a.2023

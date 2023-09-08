@@ -7,6 +7,7 @@ import { RemoveComponent } from './remove/remove.component';
 import { DblibService } from './db-lib.service';
 import { AjaxResponse } from 'rxjs/ajax';
 import { libElem } from './libElem';
+import { buttons } from './buttons';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +48,23 @@ export class RootComponent implements OnInit {
       error: (err) => console.error('Obs got an error: ' + JSON.stringify(err)),
     });
   }
+
+  attiva(id: string){
+    if(id === 'cerca')
+      this.funzionalita = new buttons(true, false, false, false)
+    else if (id === 'prestito')
+      this.funzionalita = new buttons(false, true, false, false)
+    else if (id === 'inserisci')
+      this.funzionalita = new buttons(false, false, true, false)
+    else
+      this.funzionalita = new buttons(false, false, false, true)
+  }
+  chiudi(){
+    this.funzionalita = new buttons(false, false, false, false)
+  }
+  
+  funzionalita = new buttons(false, false, false, false);
   selezione: Array<libElem> = [];
-  constructor(private ds: DblibService) {}
+    constructor(private ds: DblibService) {}
   ngOnInit() {}
 }
