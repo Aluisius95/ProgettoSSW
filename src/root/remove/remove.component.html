@@ -3,11 +3,12 @@
     <h5>ATTENZIONE: i libri in prestito attivo non possono essere rimossi!</h5>
 </h4>
 
-<input type="text" name="del" id="del" placeholder="Cerca libro tramite posizione" (keyup)="delBook()"/><button (click)="delBook()">Cerca</button>
+<input type="text" name="del" id="del" placeholder="Cerca libro tramite posizione" (keyup.enter)="delBook()"/><button (click)="delBook()">Cerca</button>
 <br>
-<select *ngIf="selezione !== []">
-    <option id="el" *ngFor="let del of selezione">{{ del.titolo }}</option>
-</select>
-<button (click)="elim()">Elimina</button><br>
+<span *ngIf="selezione !== []">
+    <input id="el" *ngFor="let del of selezione" value="{{ del.titolo }}" readonly>
+</span><br>
+<div>Se è il titolo cercato, clicca: <button (click)="elim()">Elimina</button></div>
+<br>
 <div>Esito:<span id="esitoRim">{{ msgRim }}</span></div>
 <br><hr><hr>

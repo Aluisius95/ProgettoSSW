@@ -24,14 +24,14 @@ export class RemoveComponent implements OnInit {
     //separata in due funzioni poiché questa permette la verifica del titolo prima della rimozione
     var input: HTMLInputElement = document.getElementById("del") as HTMLInputElement;
     this.posizione = input.value;
-    let reg = new RegExp(this.posizione, 'i');
+    //let reg = new RegExp(this.posizione, 'i');
     this.ds.getData().subscribe({
       next: (x: AjaxResponse<any>) => {
         this.lista = JSON.parse(x.response);
         this.lista.forEach((foundElem: any) => {
           //gli elementi che corrispondono alla ricerca, teoricamente uno visto che la posizione è univoca, 
           //vengono inseriti all'interno di un select che viene utilizzato successivamente dalla funzione elim()
-          if (this.posizione !== '' && foundElem['posizione'].search(reg) != -1)
+          if (this.posizione !== '' && foundElem['posizione'] == this.posizione)
             this.selezione.push(foundElem);
         })
       },
