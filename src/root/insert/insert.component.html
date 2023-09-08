@@ -4,5 +4,5 @@
 <input type="text" name="autore" id="autore" placeholder="Autore">*<br>
 <input type="text" name="posizione" id="posizione" placeholder="Posizione scaffale">*<br>
 <button (click)="add()">Aggiungi</button>
-<div>Esito: <div id="esitoAdd"></div></div>
+<div>Esito: <span id="esitoAdd" *ngIf="msgEsito !== undefined">{{msgEsito}}</span></div>
 <hr><hr>

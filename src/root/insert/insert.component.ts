@@ -8,14 +8,13 @@ import { libElem } from '../libElem';
   selector: 'app-insert',
   templateUrl: './insert.component.html',
   styleUrls: ['./insert.component.css'],
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   providers: [DblibService],
   standalone: true,
 })
 export class InsertComponent implements OnInit {
   lista: Array<libElem> = [];
+  msgEsito: string | undefined;
   add(){
     //inizializzazione elementi per ricavare dai campi di input e altre variabili di appoggio
     var inputT: HTMLInputElement = document.getElementById("titolo") as HTMLInputElement;
@@ -26,7 +25,6 @@ export class InsertComponent implements OnInit {
     var positionEl: string = inputP.value;
     let check: number = 0;
     var listaJSON: string;
-    var output = document.getElementById('esitoAdd');
 
     //se i tre campi non sono vuoti inizio con la ricezione del db e l'inserimento dell'aggiornamento
     if( titleEl !== '' && authorEl !== '' && positionEl !== '' ){
@@ -38,7 +36,7 @@ export class InsertComponent implements OnInit {
             if (selElem['posizione'] === positionEl)
               //se occupata, non inserisco il libro
               check = 1;
-              output!.innerHTML = 'Posizione già occupata!';
+              this.msgEsito = 'Posizione già occupata!';
           });
           if( !check ){ 
             //altrimenti creo un nuovo oggetto e lo inserisco in coda all'array
@@ -47,14 +45,14 @@ export class InsertComponent implements OnInit {
             listaJSON = JSON.stringify(this.lista);
             //dopo aver reso una stringa il nuovo array, invoco una nuova subscribe che aggiornerà il DB
             this.ds.setData(listaJSON).subscribe({
-              next: () => output!.innerHTML = 'Libro aggiunto con successo!',
+              next: () => this.msgEsito = 'Libro aggiunto con successo!',
               error: (err) => console.error("Errore nell'aggiunta 2" + err)
             })
           }
         },
         error: (err) => console.error("Errore nell'aggiunta 1" + err)
       })
-      setTimeout(function(){output!.innerHTML = '';inputA.value = '';inputT.value = '';inputP.value = '';}, 3000);      
+      setTimeout(function(){inputA.value = '';inputT.value = '';inputP.value = '';}, 3000);      
     }
   }
   constructor(private ds: DblibService) {}

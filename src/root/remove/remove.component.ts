@@ -18,6 +18,7 @@ import { libElem } from '../libElem';
 export class RemoveComponent implements OnInit {
   lista: Array<libElem> = [];
   posizione: string = '';
+  msgRim: string | undefined;
   delBook(){
     //questa funzione serve a ricercare il libro da eliminare in base alla posizione
     //separata in due funzioni poiché questa permette la verifica del titolo prima della rimozione
@@ -46,7 +47,7 @@ export class RemoveComponent implements OnInit {
     var input: HTMLInputElement = document.getElementById("el") as HTMLInputElement;
     var output = document.getElementById('esitoRim');
     var element = input.value;
-    let msg: number = 0;
+    let check: boolean = false;
     var listaJSON: string;
     this.ds.getData().subscribe({
       next: (x: AjaxResponse<any>) => {
@@ -56,18 +57,16 @@ export class RemoveComponent implements OnInit {
           if (element !== '' && foundElem['posizione'] === this.posizione && foundElem['prestito'] === undefined && foundElem['titolo'] === element){
             let x = this.lista.indexOf(foundElem);
             this.lista.splice(x , 1);
-            msg = 1;
-          }
+            check = true;
+          } else { this.msgRim = 'Libro in prestito!' }
         })
         listaJSON = JSON.stringify(this.lista);
         //se tutto è andato bene, procediamo con l'invio al server del database aggiornato
         this.ds.setData(listaJSON).subscribe({
           next: () => {
-            if(msg===1)
-              output!.innerHTML = 'Libro rimosso con successo'
-            else
-              output!.innerHTML = 'Libro in prestito!'},
-          error: (err) => output!.innerHTML = 'Errore nella rimozione: '+ err.response,
+            if(check === true)
+              this.msgRim = 'Libro rimosso con successo'},
+          error: (err) => console.error('Errore nella rimozione: '+ err.response),
         })
         
       },

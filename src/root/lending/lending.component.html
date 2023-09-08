@@ -1,8 +1,8 @@
 <h4>Dopo aver verificato la disponibilità puoi effettuare un prestito oppure una restituzione</h4>
-<input type="text" id="posizionePR" placeholder="Inserisci posizione libro" style="width: 220px">
+<input type="text" id="posizionePR" placeholder="Inserisci posizione libro" style="width: 220px" #posVal>
 <!-- campo per la visualizzazione del titolo selezionato durante il prestito -->
-<input type="text" id="titoloPre" disabled style="width: 220px; cursor:default; user-select: none;"><br>
+<span> Libro selezionato: <span *ngIf="posVal.value !== '' && libro !== undefined">{{ libro!.titolo }}</span></span><br>
 <input type="text" id="addPr" placeholder="Dare in prestito a (se non in prestito)" style="width: 220px"><br>
 <button (click)="updatePrestito()">Aggiorna prestito</button><br>
-Esito: <div id="update"></div>
+Esito: <span id="update" *ngIf="msgUpd!== undefined"> {{ msgUpd }}</span>
 <hr><hr>
