@@ -20,7 +20,6 @@ export class SelectComponent implements OnInit {
     var input: HTMLInputElement = document.getElementById('sel') as HTMLInputElement;
     var bookName = input.value;
     this.selEvent.emit(bookName);
-    input.value = '';
   }
   //i valori trovati all'interno di Root, vengono inviati al Child
   //per essere utilizzati nell'HTML e quindi nella selezione degli elementi utili
